@@ -2,7 +2,6 @@
 
 This project focuses on detecting fraudulent insurance claims using machine learning. It includes data preprocessing, model training, evaluation, and a web-based deployment using Flask.
 
-🔗 **Live Demo**: [Click here to try the deployed model](https://insurance-fraud-ml-deployment.onrender.com/predict)
 
 🔗 **GitHub Repo**: [github.com/ananyay-kaushik/Insurance-Fraud-ML-Deployment](https://github.com/ananyay-kaushik/Insurance-Fraud-ML-Deployment)
 
