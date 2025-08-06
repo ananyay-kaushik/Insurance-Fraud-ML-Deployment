@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insurance Fraud Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .form-container {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-container label {
+            font-weight: bold;
+        }
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Insurance Fraud Prediction</h2>
+        <form action="/predict" method="post">
+
+            <!-- Float Inputs -->
+            <label>Total Claim Amount:</label>
+            <input type="number" name="total_claim_amount" step="0.01" required>
+
+            <label>Bodily Injuries:</label>
+            <input type="number" name="bodily_injuries" step="0.01" required>
+
+            <label>Months as Customer:</label>
+            <input type="number" name="months_as_customer" step="0.01" required>
+
+            <label>Policy Annual Premium:</label>
+            <input type="number" name="policy_annual_premium" step="0.01" required>
+
+            <label>Policy Deductable:</label>
+            <input type="number" name="policy_deductable" step="0.01" required>
+
+            <label>Umbrella Limit:</label>
+            <input type="number" name="umbrella_limit" step="0.01" required>
+
+            <label>Age:</label>
+            <input type="number" name="age" step="0.01" required>
+
+            <label>Witnesses:</label>
+            <input type="number" name="witnesses" step="0.01" required>
+
+            <!-- Dropdowns -->
+            <label>Incident Severity:</label>
+            <select name="incident_severity" required>
+                <option value="0">Total Loss</option>
+                <option value="1">Minor Damage</option>
+                <option value="2">Major Damage</option>
+                <option value="3">Trivial Damage</option>
+            </select>
+
+            <label>Incident Type:</label>
+            <select name="incident_type" required>
+                <option value="0">Single Vehicle Collision</option>
+                <option value="1">Vehicle Theft</option>
+                <option value="2">Multi-vehicle Collision</option>
+                <option value="3">Parked Car</option>
+            </select>
+
+            <label>Collision Type:</label>
+            <select name="collision_type" required>
+                <option value="0">Front Collision</option>
+                <option value="1">Side Collision</option>
+                <option value="2">Rear Collision</option>
+            </select>
+
+            <label>Property Damage:</label>
+            <select name="property_damage" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label>Insured Occupation:</label>
+            <select name="insured_occupation" required>
+                <option value="1">craft-repair</option>
+                <option value="2">exec-managerial</option>
+                <option value="3">farmer</option>
+                <option value="4">farming-fishing</option>
+                <option value="5">handlers-cleaners</option>
+                <option value="6">machine-op-inspct</option>
+                <option value="7">other-service</option>
+                <option value="8">priv-house-serv</option>
+                <option value="9">prof-specialty</option>
+                <option value="10">protective-serv</option>
+                <option value="11">sales</option>
+                <option value="12">tech-support</option>
+                <option value="13">transport-moving</option>
+            </select>
+
+            <label>Insured Relationship:</label>
+            <select name="insured_relationship" required>
+                <option value="0">Wife</option>
+                <option value="1">Husband</option>
+                <option value="2">Not in Family</option>
+                <option value="3">Other Relative</option>
+                <option value="4">Own Child</option>
+                <option value="5">Unmarried</option>
+            </select>
+
+            <label>Insured Sex:</label>
+            <select name="insured_sex" required>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select>
+
+            <label>Education Level:</label>
+            <select name="insured_education_level" required>
+                <option value="0">Associate</option>
+                <option value="1">College</option>
+                <option value="2">High School</option>
+                <option value="3">JD</option>
+                <option value="4">MD</option>
+                <option value="5">Masters</option>
+                <option value="6">PhD</option>
+            </select>
+
+            <label>Authorities Contacted:</label>
+            <select name="authorities_contacted" required>
+                <option value="0">Ambulance</option>
+                <option value="1">Fire</option>
+                <option value="2">Other</option>
+                <option value="3">Police</option>
+                <option value="4">None</option>
+            </select>
+
+            <label>Police Report Available:</label>
+            <select name="police_report_available" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
